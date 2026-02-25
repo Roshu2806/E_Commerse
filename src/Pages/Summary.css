@@ -343,3 +343,243 @@ body {
     font-size: 16px;
   }
 }
+
+/* Add these styles to your existing Summary.css */
+
+/* ===== POPUP OVERLAY ===== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* ===== POPUP CONTAINER ===== */
+.popup-container {
+  max-width: 500px;
+  width: 100%;
+  animation: popupAnimation 0.4s ease-out;
+}
+
+@keyframes popupAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Update the summary card for popup */
+.summary-card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 25px 50px rgba(108, 39, 238, 0.3);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Add a subtle gradient border on top */
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+ 
+}
+
+/* All your existing styles below remain exactly the same */
+.summary-title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.summary-details {
+  margin-bottom: 25px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 16px;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.summary-row:last-of-type {
+  border-bottom: none;
+}
+
+.summary-row .label {
+  color: #666;
+  font-weight: 500;
+}
+
+.summary-row .value {
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-row .value.highlight {
+  color: #6c27ee;
+  font-weight: 700;
+}
+
+.summary-row .value.profit {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.summary-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #6c27ee, #a855f7, #6c27ee, transparent);
+  margin: 15px 0;
+}
+
+.summary-row.total {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+  border-bottom: none;
+}
+
+.summary-row.total .label {
+  color: #333;
+}
+
+.summary-row.total .value.final-amount {
+  color: #6c27ee;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.place-order-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #6c27ee, #a855f7);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(108, 39, 238, 0.3);
+}
+
+.place-order-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(108, 39, 238, 0.4);
+}
+
+.secure-note {
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Error Container */
+.error-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.error-container h2 {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.back-home-btn {
+  padding: 14px 35px;
+  background: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #6c27ee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.back-home-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-card {
+    padding: 25px 20px;
+  }
+
+  .summary-title {
+    font-size: 24px;
+  }
+
+  .summary-row {
+    font-size: 14px;
+  }
+
+  .summary-row.total {
+    font-size: 18px;
+  }
+
+  .summary-row.total .value.final-amount {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-card {
+    padding: 20px 15px;
+  }
+
+  .summary-title {
+    font-size: 22px;
+  }
+
+  .place-order-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .summary-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .summary-row .value {
+    align-self: flex-end;
+  }
+}

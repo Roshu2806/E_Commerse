@@ -1,4 +1,4 @@
-/* Address.css - With Scrolling Enabled */
+/* Address.css - Updated with Icons */
 
 * {
   margin: 0;
@@ -9,15 +9,12 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #f5f5f5;
-  overflow-y: auto; /* Enable body scrolling */
-  height: auto; /* Allow body to grow with content */
-  min-height: 100vh;
 }
 
 .addressPage {
   min-height: 100vh;
-  background-color: #e6e9f4 ;
-  padding-bottom: 40px; /* Add padding at bottom for better scrolling experience */
+  background-color: #f5f5f5;
+  padding-bottom: 40px;
 }
 
 /* ===== HEADER WITH STEPPER ===== */
@@ -33,7 +30,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  width: 100%;
 }
 
 .navbar-logo {
@@ -86,7 +82,7 @@ body {
   color: #999;
   z-index: 2;
   transition: all 0.3s ease;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .step-circle.active {
@@ -97,7 +93,7 @@ body {
 }
 
 .step-label {
-  font-size: 13px;
+  font-size: 12px;
   color: #999;
   font-weight: 500;
 }
@@ -108,10 +104,10 @@ body {
 }
 
 .step-line {
-  position: relative;
+  position: absolute;
   top: 18px;
   left: 45px;
-  width: calc(300% - 20px);
+  width: calc(100% - 20px);
   height: 2px;
   background-color: #e0e0e0;
   z-index: 1;
@@ -125,7 +121,7 @@ body {
   display: none;
 }
 
-/* ===== ADDRESS HEADER ===== */
+/* ===== ADDRESS HEADER WITH ICON ===== */
 .addressHeader {
   max-width: 800px;
   margin: 30px auto 20px;
@@ -139,6 +135,14 @@ body {
   font-size: 24px;
   font-weight: 700;
   color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-icon {
+  font-size: 18px; /* Small icon */
+  color: #6c27ee;
 }
 
 .add {
@@ -146,7 +150,7 @@ body {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  padding: 8px 10px;
+  padding: 8px 16px;
   border: 2px solid #6c27ee;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -157,10 +161,10 @@ body {
   color: white;
 }
 
-/* ===== ADDRESS LIST - SCROLLABLE ===== */
+/* ===== ADDRESS LIST ===== */
 .addressList {
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
@@ -179,6 +183,9 @@ body {
 
 .addressCard:hover {
   box-shadow: 0 8px 20px rgba(108, 39, 238, 0.1);
+  background: linear-gradient(135deg, #ffffff, #f9f8fa);
+  transform: translateY(-7px);
+  box-shadow: 0 8px 25px rgb(245, 244, 247);
 }
 
 .addressCard.active {
@@ -200,11 +207,24 @@ body {
   cursor: pointer;
 }
 
-.topRow h3 {
+.name-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.field-icon {
+  font-size: 14px; /* Small icons */
+  color: #6c27ee;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.name-with-icon h3 {
   font-size: 18px;
   font-weight: 600;
   color: #333;
-  flex: 1;
 }
 
 .edit {
@@ -222,20 +242,34 @@ body {
   background-color: #f3e8ff;
 }
 
+/* Address with icon */
+.address-with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .addressText {
   color: #666;
   font-size: 14px;
   line-height: 1.6;
-  margin-bottom: 8px;
-  padding-left: 35px;
+  flex: 1;
+}
+
+/* Phone with icon */
+.phone-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
 .phoneText {
   color: #333;
   font-size: 14px;
   font-weight: 500;
-  padding-left: 35px;
-  margin-bottom: 15px;
+  flex: 1;
 }
 
 .deliverBtn {
@@ -295,7 +329,6 @@ body {
   top: 0;
   background: white;
   border-radius: 16px 16px 0 0;
-  z-index: 10;
 }
 
 .modalHeader h3 {
@@ -334,25 +367,50 @@ body {
   margin-bottom: 6px;
 }
 
-.modalBody input,
-.modalBody textarea {
+/* Input with icon */
+.input-with-icon {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-field-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px; /* Small icon */
+  color: #6c27ee;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.textarea-icon .input-field-icon {
+  top: 18px;
+  transform: none;
+}
+
+.input-with-icon input,
+.input-with-icon textarea {
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px 12px 35px;
   border: 2px solid #f0f0f0;
   border-radius: 8px;
   font-size: 14px;
-  margin-bottom: 20px;
   transition: all 0.3s ease;
 }
 
-.modalBody input:focus,
-.modalBody textarea:focus {
+.input-with-icon textarea {
+  padding-top: 14px;
+}
+
+.input-with-icon input:focus,
+.input-with-icon textarea:focus {
   outline: none;
   border-color: #6c27ee;
   box-shadow: 0 0 0 3px rgba(108, 39, 238, 0.1);
 }
 
-.modalBody textarea {
+.input-with-icon textarea {
   resize: vertical;
   min-height: 100px;
 }
@@ -391,11 +449,10 @@ body {
     gap: 15px;
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap;
   }
 
   .step-item {
-    min-width: 60px;
+    min-width: 50px;
   }
 
   .step-circle {
@@ -412,44 +469,29 @@ body {
     flex-direction: column;
     gap: 15px;
     text-align: center;
-    margin-top: 20px;
-  }
-
-  .addressHeader h2 {
-    font-size: 22px;
-  }
-
-  .topRow {
-    flex-wrap: wrap;
-  }
-
-  .addressText,
-  .phoneText {
-    padding-left: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .addressPage {
-    padding-bottom: 20px;
   }
 
   .addressHeader h2 {
     font-size: 20px;
   }
 
-  .add {
-    padding: 6px 12px;
-    font-size: 13px;
+  .topRow {
+    flex-wrap: wrap;
   }
 
+  .name-with-icon {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
   .topRow {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
 
-  .topRow h3 {
+  .name-with-icon h3 {
     font-size: 16px;
   }
 
@@ -457,76 +499,464 @@ body {
     align-self: flex-end;
   }
 
-  .addressCard {
-    padding: 15px;
+  .address-with-icon,
+  .phone-with-icon {
+    flex-wrap: wrap;
   }
+}
 
-  .deliverBtn {
-    padding: 12px 20px;
-    font-size: 14px;
+
+/* Add these styles to your existing Address.css */
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.address-content-wrapper {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.address-left-column {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== PRICE DETAILS BOX - EXACTLY LIKE SCREENSHOT ===== */
+.price-details-box {
+  width: 440px;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
+}
+
+.price-details-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.price-details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.price-label {
+  color: #666;
+}
+
+.price-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.discount-row .price-value {
+  color: #038D63;
+}
+
+.price-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 16px 0;
+}
+
+.order-total-row {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.order-total-label {
+  color: #333;
+}
+
+.order-total-value {
+  color: #333;
+  font-weight: 700;
+}
+
+.discount-message-box {
+  background-color: #D3F4EA;
+  color: #038D63;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid #038D63;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.continue-note {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.continue-button {
+  width: 100%;
+  background: #6c27ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.2s ease;
+}
+
+.continue-button:hover {
+  background: #5a1fcf;
+}
+
+.safety-box {
+  background-color: #F5F5F5;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.safety-icon {
+  font-size: 24px;
+}
+
+.safety-text {
+  flex: 1;
+}
+
+.safety-text strong {
+  color: #333;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.safety-text p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .address-content-wrapper {
+    flex-direction: column;
   }
-
-  .modalHeader h3 {
-    font-size: 16px;
+  
+  .price-details-box {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
   }
+}
 
-  .modalBody {
+@media (max-width: 768px) {
+  .address-content-wrapper {
+    padding: 0 15px;
+  }
+  
+  .price-details-box {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-details-box {
     padding: 16px;
   }
-
-  .modalBody input,
-  .modalBody textarea {
+  
+  .price-details-title {
+    font-size: 15px;
+  }
+  
+  .order-total-row {
+    font-size: 15px;
+  }
+  
+  .discount-message-box {
     padding: 10px;
     font-size: 13px;
   }
-
-  .saveAddressBtn {
-    padding: 14px;
-    font-size: 14px;
+  
+  .safety-box {
+    padding: 12px;
+  }
+  
+  .safety-text strong {
+    font-size: 13px;
+  }
+  
+  .safety-text p {
+    font-size: 11px;
   }
 }
 
-/* Smooth scrolling for better UX */
-html {
-  scroll-behavior: smooth;
+/* Add these styles to your existing Address.css */
+
+/* ===== TWO COLUMN LAYOUT WITH DIVIDER ===== */
+.address-content-wrapper {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  position: relative;
 }
 
-/* Optional: Add a nice scrollbar style */
-::-webkit-scrollbar {
-  width: 8px;
+.address-left-column {
+  flex: 1;
+  min-width: 0;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* DIVIDER LINE */
+.address-divider {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, #6c27ee, #6c27ee, #6c27ee, transparent);
+  margin: 0 10px;
+  align-self: stretch;
+  position: relative;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6c27ee, #8a4af3);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a1fcf, #6c27ee);
-}
-
-/* Ensure content is scrollable */
-.addressList {
-  max-height: none; /* Remove any max-height restrictions */
-  overflow-y: visible;
-}
-
-/* Fix for the step line */
-.step-line {
+.address-divider::before {
+  content: '';
   position: absolute;
-  top: 18px;
-  left: 45px;
-  width: calc(100% - 20px);
-  height: 2px;
-  background-color: #e0e0e0;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(108, 39, 238, 0.3), rgba(108, 39, 238, 0.5), rgba(108, 39, 238, 0.3), transparent);
+  animation: dividerPulse 2s infinite;
 }
 
-/* Fix for last step line */
-.step-item:last-child .step-line {
-  display: none;
+@keyframes dividerPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ===== PRICE DETAILS BOX - EXACTLY LIKE SCREENSHOT ===== */
+.price-details-box {
+  width: 340px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
+}
+
+.price-details-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.price-details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.price-label {
+  color: #666;
+}
+
+.price-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.discount-row .price-value {
+  color: #038D63;
+}
+
+.price-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 16px 0;
+}
+
+.order-total-row {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.order-total-label {
+  color: #333;
+}
+
+.order-total-value {
+  color: #333;
+  font-weight: 700;
+}
+
+.discount-message-box {
+  background-color: #D3F4EA;
+  color: #038D63;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid #038D63;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.continue-note {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.continue-button {
+  width: 100%;
+  background: #6c27ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.2s ease;
+}
+
+.continue-button:hover {
+  background: #5a1fcf;
+}
+
+.safety-box {
+  background-color: #F5F5F5;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.safety-icon {
+  font-size: 24px;
+}
+
+.safety-text {
+  flex: 1;
+}
+
+.safety-text strong {
+  color: #333;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.safety-text p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .address-content-wrapper {
+    flex-direction: column;
+  }
+  
+  .address-divider {
+    width: 100%;
+    height: 1px;
+    margin: 20px 0;
+    background: linear-gradient(90deg, transparent, #6c27ee, #6c27ee, #6c27ee, transparent);
+  }
+  
+  .address-divider::before {
+    background: linear-gradient(90deg, transparent, rgba(108, 39, 238, 0.3), rgba(108, 39, 238, 0.5), rgba(108, 39, 238, 0.3), transparent);
+  }
+  
+  .price-details-box {
+    width: 100%;
+    position: static;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .address-content-wrapper {
+    padding: 0 15px;
+  }
+  
+  .price-details-box {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-details-box {
+    padding: 16px;
+  }
+  
+  .price-details-title {
+    font-size: 15px;
+  }
+  
+  .order-total-row {
+    font-size: 15px;
+  }
+  
+  .discount-message-box {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .safety-box {
+    padding: 12px;
+  }
+  
+  .safety-text strong {
+    font-size: 13px;
+  }
+  
+  .safety-text p {
+    font-size: 11px;
+  }
 }

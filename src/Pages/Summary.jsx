@@ -56,52 +56,54 @@ export default function Summary() {
         </div>
       </div>
 
-      {/* SUMMARY CARD - BELOW STEPPER */}
-      <div className="summary-content">
-        <div className="summary-card">
-          <h2 className="summary-title">🎉 Order Summary</h2>
+      {/* POPUP OVERLAY AND MODAL */}
+      <div className="popup-overlay">
+        <div className="popup-container">
+          <div className="summary-card">
+            <h2 className="summary-title">🎉 Order Summary</h2>
 
-          <div className="summary-details">
-            <div className="summary-row">
-              <span className="label">Payment Method</span>
-              <span className="value highlight">{method.toUpperCase()}</span>
+            <div className="summary-details">
+              <div className="summary-row">
+                <span className="label">Payment Method</span>
+                <span className="value highlight">{method.toUpperCase()}</span>
+              </div>
+
+              <div className="summary-row">
+                <span className="label">Product Price</span>
+                <span className="value">₹{price}</span>
+              </div>
+
+              {resell && (
+                <>
+                  <div className="summary-row">
+                    <span className="label">Your Margin</span>
+                    <span className="value profit">+ ₹{margin}</span>
+                  </div>
+
+                  <div className="summary-row">
+                    <span className="label">Profit</span>
+                    <span className="value profit">₹{margin}</span>
+                  </div>
+                </>
+              )}
+
+              <div className="summary-divider"></div>
+
+              <div className="summary-row total">
+                <span className="label">Final Amount</span>
+                <span className="value final-amount">₹{final}</span>
+              </div>
             </div>
 
-            <div className="summary-row">
-              <span className="label">Product Price</span>
-              <span className="value">₹{price}</span>
-            </div>
+            {/* PLACE ORDER BUTTON */}
+            <button className="place-order-btn" onClick={handlePlaceOrder}>
+              Place Order
+            </button>
 
-            {resell && (
-              <>
-                <div className="summary-row">
-                  <span className="label">Your Margin</span>
-                  <span className="value profit">+ ₹{margin}</span>
-                </div>
-
-                <div className="summary-row">
-                  <span className="label">Profit</span>
-                  <span className="value profit">₹{margin}</span>
-                </div>
-              </>
-            )}
-
-            <div className="summary-divider"></div>
-
-            <div className="summary-row total">
-              <span className="label">Final Amount</span>
-              <span className="value final-amount">₹{final}</span>
-            </div>
+            <p className="secure-note">
+              🔒 Secure Checkout • 100% Protected
+            </p>
           </div>
-
-          {/* PLACE ORDER BUTTON */}
-          <button className="place-order-btn" onClick={handlePlaceOrder}>
-            Place Order
-          </button>
-
-          <p className="secure-note">
-            🔒 Secure Checkout • 100% Protected
-          </p>
         </div>
       </div>
     </div>

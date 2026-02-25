@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Address.css";
 import "./Payment";
 import { BiShoppingBag } from "react-icons/bi";
+import { FiMapPin, FiPhone, FiUser } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Address() {
@@ -66,6 +67,11 @@ export default function Address() {
     setShowForm(true);
   };
 
+  // Sample price data
+  const totalPrice = 15422;
+  const totalDiscount = 5468;
+  const orderTotal = 9954;
+
   return (
     <div className="addressPage">
       {/* HEADER WITH STEPPER */}
@@ -103,57 +109,121 @@ export default function Address() {
         </div>
       </div>
 
-      {/* TITLE */}
-      <div className="addressHeader">
-        <h2>Select Delivery Address</h2>
-        <span className="add" onClick={() => setShowForm(true)}>
-          + ADD NEW ADDRESS
-        </span>
-      </div>
-
-      {/* ADDRESS LIST */}
-      <div className="addressList">
-        {addresses.map(a => (
-          <div
-            key={a.id}
-            className={`addressCard ${selected === a.id ? "active" : ""}`}
-            onClick={() => setSelected(a.id)}
-          >
-            <div className="topRow">
-              <input
-                type="radio"
-                name="addressSelect"
-                checked={selected === a.id}
-                onChange={() => setSelected(a.id)}
-              />
-              <h3>{a.name}</h3>
-              <span
-                className="edit"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  editAddress(a);
-                }}
-              >
-                EDIT
-              </span>
-            </div>
-
-            <p className="addressText">{a.address}</p>
-            <p className="phoneText">{a.phone}</p>
-
-            {selected === a.id && (
-              <button
-                className="deliverBtn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate("/payment");
-                }}
-              >
-                Deliver to this Address
-              </button>
-            )}
+      {/* MAIN CONTENT WITH TWO COLUMNS AND DIVIDER */}
+      <div className="address-content-wrapper">
+        {/* LEFT COLUMN - ADDRESS SECTION */}
+        <div className="address-left-column">
+          {/* TITLE WITH LOCATION ICON */}
+          <div className="addressHeader">
+            <h2>
+              <FiMapPin className="title-icon" />
+              Select Delivery Address
+            </h2>
+            <span className="add" onClick={() => setShowForm(true)}>
+              + ADD NEW ADDRESS
+            </span>
           </div>
-        ))}
+
+          {/* ADDRESS LIST WITH ICONS */}
+          <div className="addressList">
+            {addresses.map(a => (
+              <div
+                key={a.id}
+                className={`addressCard ${selected === a.id ? "active" : ""}`}
+                onClick={() => setSelected(a.id)}
+              >
+                <div className="topRow">
+                  <input
+                    type="radio"
+                    name="addressSelect"
+                    checked={selected === a.id}
+                    onChange={() => setSelected(a.id)}
+                  />
+                  <div className="name-with-icon">
+                    <FiUser className="field-icon" />
+                    <h3>{a.name}</h3>
+                  </div>
+                  <span
+                    className="edit"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      editAddress(a);
+                    }}
+                  >
+                    EDIT
+                  </span>
+                </div>
+
+                <div className="address-with-icon">
+                  <FiMapPin className="field-icon" />
+                  <p className="addressText">{a.address}</p>
+                </div>
+
+                <div className="phone-with-icon">
+                  <FiPhone className="field-icon" />
+                  <p className="phoneText">{a.phone}</p>
+                </div>
+
+                {selected === a.id && (
+                  <button
+                    className="deliverBtn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/payment");
+                    }}
+                  >
+                    Deliver to this Address
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* DIVIDER LINE */}
+        <div className="address-divider"></div>
+
+        {/* RIGHT COLUMN - PRICE DETAILS BOX (EXACTLY LIKE SCREENSHOT) */}
+        <div className="price-details-box">
+          <h3 className="price-details-title">Price Details (3 Items)</h3>
+          
+          <div className="price-details-row">
+            <span className="price-label">Product Price</span>
+            <span className="price-value">₱{totalPrice}</span>
+          </div>
+          
+          <div className="price-details-row discount-row">
+            <span className="price-label">Total Discounts</span>
+            <span className="price-value discount-value">- ₱{totalDiscount}</span>
+          </div>
+          
+          <div className="price-divider"></div>
+          
+          <div className="price-details-row order-total-row">
+            <span className="price-label order-total-label">Order Total</span>
+            <span className="price-value order-total-value">₱{orderTotal}</span>
+          </div>
+          
+          <div className="discount-message-box">
+            🎉 Yay! Your total discount is ₱{totalDiscount}
+          </div>
+          
+          <div className="continue-note">
+            Clicking on 'Continue' will not deduct any money
+          </div>
+          
+          <button className="continue-button" onClick={() => navigate("/payment")}>
+            Continue
+          </button>
+          
+          <div className="safety-box">
+            <div className="safety-icon">🛡️</div>
+            <div className="safety-text">
+              <strong>Your Safety, Our Priority</strong>
+              <p>We make sure that your package is safe at every point of contact.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* MODAL */}
@@ -167,29 +237,38 @@ export default function Address() {
 
             <div className="modalBody">
               <label>Name</label>
-              <input
-                name="name"
-                placeholder="Enter name"
-                value={form.name}
-                onChange={handleChange}
-              />
+              <div className="input-with-icon">
+                <FiUser className="input-field-icon" />
+                <input
+                  name="name"
+                  placeholder="Enter name"
+                  value={form.name}
+                  onChange={handleChange}
+                />
+              </div>
 
               <label>Contact Number</label>
-              <input
-                name="phone"
-                placeholder="Enter phone"
-                value={form.phone}
-                onChange={handleChange}
-              />
+              <div className="input-with-icon">
+                <FiPhone className="input-field-icon" />
+                <input
+                  name="phone"
+                  placeholder="Enter phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                />
+              </div>
 
               <label>Address</label>
-              <textarea
-                name="address"
-                placeholder="Enter full address"
-                value={form.address}
-                onChange={handleChange}
-                rows="4"
-              />
+              <div className="input-with-icon textarea-icon">
+                <FiMapPin className="input-field-icon" />
+                <textarea
+                  name="address"
+                  placeholder="Enter full address"
+                  value={form.address}
+                  onChange={handleChange}
+                  rows="4"
+                />
+              </div>
 
               <button className="saveAddressBtn" onClick={saveAddress}>
                 Save Address and Continue

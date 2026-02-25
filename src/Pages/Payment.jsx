@@ -11,14 +11,21 @@ import {
   FiClock,
   FiCheckCircle,
   FiChevronLeft,
-  FiChevronRight
+  FiChevronRight,
+  FiAward,
+  FiStar,
+  FiTrendingUp,
+  FiChevronDown,
+  FiChevronUp
 } from 'react-icons/fi';
 import { 
   BsQrCode, 
   BsWallet2, 
   BsLightningCharge, 
   BsGem,
-  BsShieldCheck
+  BsShieldCheck,
+  BsGraphUp,
+  BsTags
 } from 'react-icons/bs';
 import { 
   SiPhonepe, 
@@ -37,6 +44,7 @@ const Payment = () => {
   const [upiOption, setUpiOption] = useState("qr");
   const [selectedWallet, setSelectedWallet] = useState(null);
   const [showQR, setShowQR] = useState(false);
+  const [showOffers, setShowOffers] = useState(false); // State for offers dropdown
   const navigate = useNavigate();
 
   const priceCOD = 441;
@@ -80,11 +88,20 @@ const Payment = () => {
 
   return (
     <div className="payment-page">
+      {/* Animated Background */}
+      <div className="payment-bg">
+        <div className="gradient-sphere sphere-1"></div>
+        <div className="gradient-sphere sphere-2"></div>
+        <div className="gradient-sphere sphere-3"></div>
+        <div className="grid-pattern"></div>
+      </div>
+
       {/* HEADER */}
       <div className="payment-header">
         <div className="header-container">
           <Link to="/" className="header-logo">
             <div className="logo-wrapper">
+              <div className="logo-glow"></div>
               <FiShoppingBag className="logo-icon" />
               <span className="logo-brand">SpecsMart</span>
             </div>
@@ -100,10 +117,17 @@ const Payment = () => {
                   {step === 1 ? 'Cart' : step === 2 ? 'Address' : step === 3 ? 'Payment' : 'Summary'}
                 </span>
                 {step < 4 && (
-                  <div className={`step-line ${activeStep > step ? 'completed' : ''}`} />
+                  <div className={`step-line ${activeStep > step ? 'completed' : ''}`}>
+                    <div className="step-line-progress"></div>
+                  </div>
                 )}
               </div>
             ))}
+          </div>
+
+          <div className="header-secure">
+            <span className="secure-dot"></span>
+            <span>Secure Checkout</span>
           </div>
         </div>
       </div>
@@ -113,7 +137,10 @@ const Payment = () => {
         <div className="content-wrapper">
           {/* LEFT SECTION */}
           <div className="payment-left">
-            <h2 className="section-title">Select Payment Method</h2>
+            <h2 className="section-title">
+              <FiCreditCard className="title-icon" />
+              Select Payment Method
+            </h2>
 
             {/* Bank Offers Banner */}
             <div className="offer-card">
@@ -121,123 +148,131 @@ const Payment = () => {
                 <span className="offer-icon">🏷️</span>
                 <div className="offer-text">
                   <strong>Extra discount with bank offers</strong>
-                  <span className="view-offers">View Offers →</span>
                 </div>
               </div>
             </div>
 
-            {/* UPI Section */}
-            <div className="payment-section">
-              <div className="section-header">
-                <div className="header-left">
-                  <BsQrCode className="section-icon" />
-                  <span>UPI Payment</span>
-                </div>
-                <span className="badge-offer">Offers Available</span>
-              </div>
-              
-              {/* UPI Options Toggle */}
-              <div className="upi-toggle">
-                <button 
-                  className={`toggle-option ${upiOption === 'qr' ? 'active' : ''}`}
-                  onClick={() => setUpiOption('qr')}
-                >
-                  <BsQrCode /> QR Code
-                </button>
-                <button 
-                  className={`toggle-option ${upiOption === 'id' ? 'active' : ''}`}
-                  onClick={() => setUpiOption('id')}
-                >
-                  <FiSmartphone /> UPI ID
-                </button>
-              </div>
+            {/* View Offers Button */}
+            <button 
+              className="view-offers-main-btn"
+              onClick={() => setShowOffers(!showOffers)}
+            >
+              <BsTags className="btn-icon" />
+              View Offers
+              {showOffers ? <FiChevronUp className="chevron-icon" /> : <FiChevronDown className="chevron-icon" />}
+            </button>
 
-              {/* QR Code Box */}
-              {upiOption === 'qr' && (
-                <div className="qr-card">
-                  <div className="qr-content">
-                    <div className="qr-placeholder">
-                      <BsQrCode className="qr-icon-large" />
+            {/* UPI Section - Hidden inside View Offers */}
+            {showOffers && (
+              <>
+                <div className="payment-section">
+                  <div className="section-header">
+                    <div className="header-left">
+                      <BsQrCode className="section-icon" />
+                      <span>UPI Payment</span>
                     </div>
-                    <div className="qr-info">
-                      <strong>Scan & Pay</strong>
-                      <p>Scan QR code with any UPI app</p>
-                      <button 
-                        className="qr-view-btn"
-                        onClick={() => setShowQR(!showQR)}
-                      >
-                        View QR Code →
-                      </button>
+                    <span className="badge-offer">Offers Available</span>
+                  </div>
+                  
+                  {/* UPI Options Toggle */}
+                  <div className="upi-toggle">
+                    <button 
+                      className={`toggle-option ${upiOption === 'qr' ? 'active' : ''}`}
+                      onClick={() => setUpiOption('qr')}
+                    >
+                      <BsQrCode /> QR Code
+                    </button>
+                    <button 
+                      className={`toggle-option ${upiOption === 'id' ? 'active' : ''}`}
+                      onClick={() => setUpiOption('id')}
+                    >
+                      <FiSmartphone /> UPI ID
+                    </button>
+                  </div>
+
+                  {/* QR Code Box */}
+                  {upiOption === 'qr' && (
+                    <div className="qr-card">
+                      <div className="qr-content">
+                        <div className="qr-placeholder">
+                          <BsQrCode className="qr-icon-large" />
+                        </div>
+                        <div className="qr-info">
+                          <strong>Scan & Pay</strong>
+                          <p>Scan QR code with any UPI app</p>
+                          <span className="qr-view-text">View QR Code →</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* UPI ID Input */}
+                  {upiOption === 'id' && (
+                    <div className="upi-id-card">
+                      <input 
+                        type="text" 
+                        placeholder="Enter UPI ID (e.g., name@okhdfcbank)"
+                        className="upi-input"
+                      />
+                      <button className="verify-btn">Verify</button>
+                    </div>
+                  )}
+
+                  {/* Add UPI ID */}
+                  <button className="add-upi-btn">
+                    <span>+ Add New UPI ID</span>
+                  </button>
+                </div>
+
+                {/* Wallet Section */}
+                <div className="payment-section">
+                  <div className="section-header">
+                    <div className="header-left">
+                      <BsWallet2 className="section-icon" />
+                      <span>Wallet</span>
+                    </div>
+                    <span className="badge-offer">Offers Available</span>
+                  </div>
+                  
+                  <div className="wallet-grid">
+                    <div className="wallet-item">
+                      <input type="radio" name="wallet" id="phonepe" />
+                      <label htmlFor="phonepe" className="wallet-label">
+                        <SiPhonepe className="wallet-icon phonepe" />
+                        <span>PhonePe</span>
+                        <span className="wallet-balance">₹0</span>
+                      </label>
+                    </div>
+                    <div className="wallet-item">
+                      <input type="radio" name="wallet" id="paytm" />
+                      <label htmlFor="paytm" className="wallet-label">
+                        <SiPaytm className="wallet-icon paytm" />
+                        <span>Paytm</span>
+                        <span className="wallet-balance">₹0</span>
+                      </label>
+                    </div>
+                    <div className="wallet-item">
+                      <input type="radio" name="wallet" id="googlepay" />
+                      <label htmlFor="googlepay" className="wallet-label">
+                        <SiGooglepay className="wallet-icon" style={{ color: '#4285f4' }} />
+                        <span>Google Pay</span>
+                        <span className="wallet-balance">₹0</span>
+                      </label>
+                    </div>
+                    <div className="wallet-item">
+                      <input type="radio" name="wallet" id="amazonpay" />
+                      <label htmlFor="amazonpay" className="wallet-label">
+                        <SiAmazonpay className="wallet-icon amazon" />
+                        <span>Amazon Pay</span>
+                        <span className="wallet-balance">₹0</span>
+                      </label>
                     </div>
                   </div>
                 </div>
-              )}
+              </>
+            )}
 
-              {/* UPI ID Input */}
-              {upiOption === 'id' && (
-                <div className="upi-id-card">
-                  <input 
-                    type="text" 
-                    placeholder="Enter UPI ID (e.g., name@okhdfcbank)"
-                    className="upi-input"
-                  />
-                  <button className="verify-btn">Verify</button>
-                </div>
-              )}
-
-              {/* Add UPI ID */}
-              <button className="add-upi-btn">
-                <span>+ Add New UPI ID</span>
-              </button>
-            </div>
-
-            {/* Wallet Section */}
-            <div className="payment-section">
-              <div className="section-header">
-                <div className="header-left">
-                  <BsWallet2 className="section-icon" />
-                  <span>Wallet</span>
-                </div>
-                <span className="badge-offer">Offers Available</span>
-              </div>
-              
-              <div className="wallet-grid">
-                <div className="wallet-item">
-                  <input type="radio" name="wallet" id="phonepe" />
-                  <label htmlFor="phonepe" className="wallet-label">
-                    <SiPhonepe className="wallet-icon phonepe" />
-                    <span>PhonePe</span>
-                    <span className="wallet-balance">₹0</span>
-                  </label>
-                </div>
-                <div className="wallet-item">
-                  <input type="radio" name="wallet" id="paytm" />
-                  <label htmlFor="paytm" className="wallet-label">
-                    <SiPaytm className="wallet-icon paytm" />
-                    <span>Paytm</span>
-                    <span className="wallet-balance">₹0</span>
-                  </label>
-                </div>
-                <div className="wallet-item">
-                  <input type="radio" name="wallet" id="googlepay" />
-                  <label htmlFor="googlepay" className="wallet-label">
-                    <SiGooglepay className="wallet-icon" style={{ color: '#4285f4' }} />
-                    <span>Google Pay</span>
-                    <span className="wallet-balance">₹0</span>
-                  </label>
-                </div>
-                <div className="wallet-item">
-                  <input type="radio" name="wallet" id="amazonpay" />
-                  <label htmlFor="amazonpay" className="wallet-label">
-                    <SiAmazonpay className="wallet-icon amazon" />
-                    <span>Amazon Pay</span>
-                    <span className="wallet-balance">₹0</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Payment Options */}
+            {/* Payment Options - Always Visible */}
             <div className="payment-options">
               {/* COD Option */}
               <div
@@ -330,6 +365,9 @@ const Payment = () => {
             )}
           </div>
 
+          {/* DIVIDER LINE */}
+          <div className="payment-divider"></div>
+
           {/* RIGHT SECTION */}
           <div className="payment-right">
             <div className="price-card">
@@ -369,19 +407,7 @@ const Payment = () => {
                 🔒 Clicking 'Continue' won't deduct any money
               </p>
 
-              <div className="quick-actions">
-                <button className="action-btn">
-                  <BsQrCode /> Show QR
-                </button>
-                <button className="action-btn">
-                  + Add UPI ID
-                </button>
-              </div>
-
-              <div className="wallet-quick">
-                <span>Wallets</span>
-                <span className="offer-tag">Offers Available</span>
-              </div>
+        
             </div>
           </div>
         </div>

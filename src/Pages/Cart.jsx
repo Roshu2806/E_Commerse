@@ -6,6 +6,7 @@ import { FiClock, FiHeart, FiUser, FiSearch, FiShoppingCart } from "react-icons/
 import { MdLocalOffer } from "react-icons/md";
 import "./Cart.css";
 
+
 const initialItems = [
   {
     id: 1,
@@ -89,13 +90,14 @@ export default function Cart() {
       item.id === id ? { ...item, qty: newQty } : item
     ));
   };
+  
 
   return (
     <div className="page">
-      {/* Attractive Navbar */}
+      {/* Attractive Navbar with Stepper in Center */}
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="navbar-container">
-          {/* Logo */}
+          {/* Logo - Left */}
           <Link to="/" className="navbar-logo">
             <div className="logo-wrapper">
               <BiShoppingBag className="logo-icon" />
@@ -103,17 +105,36 @@ export default function Cart() {
             </div>
           </Link>
 
-          {/* Search Bar */}
-          <div className="nav-search">
-            <input 
-              type="text" 
-              placeholder="Search for products..." 
-              className="search-input"
-            />
-            <FiSearch className="search-icon" />
+          {/* Stepper - Center (NEW) */}
+          <div className="navbar-stepper">
+            <div className="stepper">
+              <div className="step-item">
+                <div className={`step-circle ${activeStep >= 1 ? 'active' : ''}`}>1</div>
+                <span className={`step-label ${activeStep >= 1 ? 'active' : ''}`}>Cart</span>
+                <div className={`step-line ${activeStep > 1 ? 'completed' : ''}`}></div>
+              </div>
+              
+              <div className="step-item">
+                <div className={`step-circle ${activeStep >= 2 ? 'active' : ''}`}>2</div>
+                <span className={`step-label ${activeStep >= 2 ? 'active' : ''}`}>Address</span>
+                <div className={`step-line ${activeStep > 2 ? 'completed' : ''}`}></div>
+              </div>
+              
+              <div className="step-item">
+                <div className={`step-circle ${activeStep >= 3 ? 'active' : ''}`}>3</div>
+                <span className={`step-label ${activeStep >= 3 ? 'active' : ''}`}>Payment</span>
+                <div className={`step-line ${activeStep > 3 ? 'completed' : ''}`}></div>
+              </div>
+              
+              <div className="step-item">
+                <div className={`step-circle ${activeStep >= 4 ? 'active' : ''}`}>4</div>
+                <span className={`step-label ${activeStep >= 4 ? 'active' : ''}`}>Summary</span>
+              </div>
+            </div>
           </div>
 
-          {/* Nav Icons */}
+         
+          {/* Nav Icons - Right */}
           <div className="nav-icons">
             <Link to="/offers" className="nav-icon-link">
               <MdLocalOffer className="nav-icon" />
@@ -136,8 +157,8 @@ export default function Cart() {
         </div>
       </nav>
 
-      {/* Stepper with Logo */}
-      <div className="stepper-container">
+      {/* Original Stepper Container - HIDDEN */}
+      <div className="stepper-container" style={{ display: 'none' }}>
         <div className="stepper-with-logo">
           <div className="stepper">
             <div className="step-item">
@@ -171,7 +192,7 @@ export default function Cart() {
           <img src="/shop img.png" alt="empty cart" className="emptyImg" />
           <h2>Your cart is empty</h2>
           <p>Just relax, let us help you find some first-class products</p>
-          <button onClick={() => navigate("/products")} className="continue-btn">
+          <button onClick={() => navigate("/products")} className="shopBtn">
             Start Shopping
           </button>
         </div>
@@ -238,6 +259,9 @@ export default function Cart() {
                 </div>
               ))}
             </div>
+
+            {/* DIVIDER LINE */}
+            <div className="cart-divider"></div>
 
             {/* RIGHT SECTION - PRICE DETAILS */}
             <div className="right sticky">
