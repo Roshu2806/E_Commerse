@@ -5,7 +5,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import { FiClock, FiHeart, FiUser, FiSearch, FiShoppingCart } from "react-icons/fi";
 import { MdLocalOffer } from "react-icons/md";
 import "./Cart.css";
-
+import Navbar from "../components/Navbar";
 
 const initialItems = [
   {
@@ -90,75 +90,18 @@ export default function Cart() {
       item.id === id ? { ...item, qty: newQty } : item
     ));
   };
-  
 
   return (
+    <>
+    
+    < Navbar />
+
+
     <div className="page">
-      {/* Attractive Navbar with Stepper in Center */}
-      <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <div className="navbar-container">
-          {/* Logo - Left */}
-          <Link to="/" className="navbar-logo">
-            <div className="logo-wrapper">
-              <BiShoppingBag className="logo-icon" />
-              <span className="logo-brand">SpecsMart</span>
-            </div>
-          </Link>
+ 
 
-          {/* Stepper - Center (NEW) */}
-          <div className="navbar-stepper">
-            <div className="stepper">
-              <div className="step-item">
-                <div className={`step-circle ${activeStep >= 1 ? 'active' : ''}`}>1</div>
-                <span className={`step-label ${activeStep >= 1 ? 'active' : ''}`}>Cart</span>
-                <div className={`step-line ${activeStep > 1 ? 'completed' : ''}`}></div>
-              </div>
-              
-              <div className="step-item">
-                <div className={`step-circle ${activeStep >= 2 ? 'active' : ''}`}>2</div>
-                <span className={`step-label ${activeStep >= 2 ? 'active' : ''}`}>Address</span>
-                <div className={`step-line ${activeStep > 2 ? 'completed' : ''}`}></div>
-              </div>
-              
-              <div className="step-item">
-                <div className={`step-circle ${activeStep >= 3 ? 'active' : ''}`}>3</div>
-                <span className={`step-label ${activeStep >= 3 ? 'active' : ''}`}>Payment</span>
-                <div className={`step-line ${activeStep > 3 ? 'completed' : ''}`}></div>
-              </div>
-              
-              <div className="step-item">
-                <div className={`step-circle ${activeStep >= 4 ? 'active' : ''}`}>4</div>
-                <span className={`step-label ${activeStep >= 4 ? 'active' : ''}`}>Summary</span>
-              </div>
-            </div>
-          </div>
-
-         
-          {/* Nav Icons - Right */}
-          <div className="nav-icons">
-            <Link to="/offers" className="nav-icon-link">
-              <MdLocalOffer className="nav-icon" />
-              <span className="nav-icon-label">Offers</span>
-            </Link>
-            <Link to="/wishlist" className="nav-icon-link">
-              <FiHeart className="nav-icon" />
-              <span className="nav-icon-label">Wishlist</span>
-            </Link>
-            <Link to="/login" className="nav-icon-link">
-              <FiUser className="nav-icon" />
-              <span className="nav-icon-label">Account</span>
-            </Link>
-            <Link to="/cart" className="nav-icon-link cart-icon">
-              <FiShoppingCart className="nav-icon" />
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-              <span className="nav-icon-label">Cart</span>
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      {/* Original Stepper Container - HIDDEN */}
-      <div className="stepper-container" style={{ display: 'none' }}>
+      {/* Stepper Container - Below Navbar exactly as before */}
+      <div className="stepper-container">
         <div className="stepper-with-logo">
           <div className="stepper">
             <div className="step-item">
@@ -323,5 +266,11 @@ export default function Cart() {
         </div>
       )}
     </div>
+
+
+    </>
   );
-}
+};
+
+
+  

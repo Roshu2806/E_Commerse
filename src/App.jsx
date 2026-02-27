@@ -11,6 +11,7 @@ import Summary from "./Pages/Summary";
 import ThankYou from "./Pages/Thankyou";
 
 
+
 function App() {
   return (
   
@@ -25,6 +26,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/summary" element={<Summary/>}/>
         <Route path="/thankyou" element={<ThankYou />} />
+      
        
       </Routes>
 

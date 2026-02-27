@@ -10,12 +10,14 @@ import {
 import { BiShoppingBag } from 'react-icons/bi';
 import { MdLocalOffer } from 'react-icons/md';
 import { GiSpectacles } from 'react-icons/gi';
+import { FaBoxOpen } from "react-icons/fa";
 import './Style/Navbar.css';
+
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [cartCount, setCartCount] = useState(3);
+   const [cartCount, setCartCount] = useState(0);
     const [logoHover, setLogoHover] = useState(false);
     const [searchHover, setSearchHover] = useState(false);
 
@@ -42,6 +44,29 @@ const Navbar = () => {
     const closeMenu = () => {
         setIsOpen(false);
     };
+    // 🔥 Dynamic Cart Count
+// 🔥 Dynamic Cart Count (Correct Version)
+useEffect(() => {
+    const updateCartCount = () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const totalQty = cart.reduce((acc, item) => {
+            return acc + (item.quantity || 1);
+        }, 0);
+
+        setCartCount(totalQty);
+    };
+
+    // Load on first render
+    updateCartCount();
+
+    // Custom event listener
+    window.addEventListener("cartUpdated", updateCartCount);
+
+    return () => {
+        window.removeEventListener("cartUpdated", updateCartCount);
+    };
+}, []);
 
     return (
         <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
@@ -63,7 +88,7 @@ const Navbar = () => {
                             </div>
                             <div className="logo-text-container">
                                 <span className="logo-brand">SpecsMart</span>
-                                <span className="logo-tagline">Premium Eyewear</span>
+                                <span className="logo-tagline">Premium Products</span>
                             </div>
                         </div>
                     </Link>
@@ -84,7 +109,7 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink 
-                                to="/shop" 
+                                to="/products" 
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                                 onClick={closeMenu}
                             >
@@ -99,6 +124,16 @@ const Navbar = () => {
                                 onClick={closeMenu}
                             >
                                 <span className="nav-link-text">About</span>
+                                <span className="nav-link-hover"></span>
+                            </NavLink>
+                        </li>
+                         <li className="nav-item">
+                            <NavLink 
+                                to="/support" 
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                                onClick={closeMenu}
+                            >
+                                <span className="nav-link-text">Support</span>
                                 <span className="nav-link-hover"></span>
                             </NavLink>
                         </li>
@@ -128,37 +163,44 @@ const Navbar = () => {
                         <FaSearch className="search-icon" />
                         <input 
                             type="text" 
-                            placeholder="Search for eyewear..." 
+                            placeholder="Search for products..." 
                             className="search-input"
                         />
                         <div className="search-glow"></div>
                     </div>
 
                     {/* Desktop Right Icons */}
-                    <div className="nav-icons desktop-only">
-                    
-                        <NavLink to="/login" className="icon-link" title="Login / Sign Up">
-                            <FaUser className="icon" />
-                            <span className="icon-tooltip">Account</span>
-                        </NavLink>
-                        <NavLink to="/cart" className="icon-link cart-icon" title="Shopping Cart">
-                            <FaShoppingCart className="icon" />
-                            {cartCount > 0 && (
-                                <>
-                                    <span className="cart-badge">{cartCount}</span>
-                                    <span className="cart-pulse"></span>
-                                </>
-                            )}
-                            <span className="icon-tooltip">Cart</span>
-                        </NavLink>
-                    </div>
-                </div>
+                   <div className="nav-icons desktop-only">
 
-                {/* Mobile Menu Toggle */}
-                <div className="menu-toggle" onClick={toggleMenu}>
-                    {isOpen ? <FaTimes /> : <FaBars />}
-                </div>
-            </div>
+    {/* Login */}
+    <NavLink 
+        to="/login" 
+        className="icon-link" 
+        title="Login / Sign Up"
+    >
+        <FaUser className="icon" />
+        <span className="icon-tooltip">Account</span>
+    </NavLink>
+
+    {/* Cart */}
+    <NavLink 
+        to="/cart" 
+        className="icon-link cart-icon" 
+        title="Shopping Cart"
+    >
+        <FaShoppingCart className="icon" />
+        {cartCount > 0 && (
+            <>
+                <span className="cart-badge">{cartCount}</span>
+                <span className="cart-pulse"></span>
+            </>
+        )}
+        <span className="icon-tooltip">Cart</span>
+    </NavLink>
+
+</div>
+</div>
+</div>
 
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
@@ -174,11 +216,11 @@ const Navbar = () => {
                     </li>
                     <li className="mobile-nav-item">
                         <NavLink 
-                            to="/shop" 
+                            to="/products" 
                             className={({ isActive }) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'}
                             onClick={closeMenu}
                         >
-                            <span>Shop</span>
+                            <span>Products</span>
                         </NavLink>
                     </li>
                     <li className="mobile-nav-item">
@@ -189,6 +231,17 @@ const Navbar = () => {
                         >
                             <span>About</span>
                         </NavLink>
+                    </li>
+                     <li className="mobile-nav-item">
+                        <NavLink 
+                            to="/support" 
+                            className={({ isActive }) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'}
+                            onClick={closeMenu}
+                        >
+                            <span>Support</span>
+                        </NavLink>
+                    </li>
+                      <li className="mobile-nav-item">
                     </li>
                     <li className="mobile-nav-item">
                         <NavLink 
@@ -221,10 +274,13 @@ const Navbar = () => {
                             {cartCount > 0 && <span className="cart-badge-mobile">{cartCount}</span>}
                         </NavLink>
                     </li>
+                                   <li className="mobile-nav-item">
+                    </li>
                 </ul>
             </div>
         </nav>
     );
 };
+
 
 export default Navbar;

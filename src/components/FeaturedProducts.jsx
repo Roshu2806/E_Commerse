@@ -36,26 +36,16 @@ const FeaturedProducts = () => {
 
   // Brand Logos Data
   const brands = [
-  { id: 1, name: 'Nike', logo: 'https://1000logos.net/wp-content/uploads/2017/02/Nike-Logo-500x281.png' },
-  { id: 2, name: 'Adidas', logo: 'https://1000logos.net/wp-content/uploads/2016/10/Adidas-logo-500x325.png' },
-  { id: 3, name: 'Zara', logo: 'https://1000logos.net/wp-content/uploads/2017/02/Zara-Logo-500x281.png' },
-  { id: 4, name: 'H&M', logo: 'https://1000logos.net/wp-content/uploads/2017/02/HM-Logo-500x313.png' },
-  { id: 5, name: "Levi's", logo: 'https://1000logos.net/wp-content/uploads/2017/05/Levis-Logo-500x313.png' },
-  { id: 6, name: 'Puma', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Puma-logo-500x313.png' },
-  { id: 7, name: 'Raymond', logo: 'https://www.raymond.in/cdn/shop/files/logo_150x.png' },
-  { id: 8, name: 'Tanishq', logo: 'https://www.tanishq.co.in/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dw9b4c4b7f/images/logo.svg' },
+    { id: 1, name: 'Nike', logo: 'https://i.redd.it/ask-add-name-to-nike-logo-v0-r0guj97blnyc1.jpg?width=866&format=pjpg&auto=webp&s=4a7538b78dae27c86b2d265c80fc3999817307fe' },
+    { id: 2, name: 'Adidas', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ96JV-lrmp-BmIoG5SVmxxLrMYPkZ_bGvnBQ&s' },
+    { id: 3, name: 'Zara', logo: 'https://logomakerr.ai/blog/wp-content/uploads/2022/08/2019-to-Present-Zara-logo-design.jpg' },
+    { id: 4, name: 'H&M', logo: 'https://1000logos.net/wp-content/uploads/2017/02/HM-Logo-500x313.png' },
+    { id: 5, name: "Levi's", logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ZwT3ue_C711rtaDPIOV0UOcZm8jUdftWWw&s' },
+    { id: 6, name: 'Puma', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSAHH3gxsSY-pUUTxush0X-skJmlwFTQU6Tw&s' },
+    { id: 7, name: 'Raymond', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXDvlwKy4AYi0LfgHd69JJ3QAOIBwV2Uuwew&s' },
+    { id: 8, name: 'Tanishq', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR72bMqK0ML8r8ez1X6DfGyNrOhgwubvQCfGA&s' },
+  ];
 
-  { id: 9, name: 'Gucci', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Gucci-logo-500x281.png' },
-  { id: 10, name: 'Louis Vuitton', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Louis-Vuitton-logo-500x281.png' },
-  { id: 11, name: 'Under Armour', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Under-Armour-logo-500x281.png' },
-  { id: 12, name: 'Reebok', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Reebok-logo-500x281.png' },
-  { id: 13, name: 'Fila', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Fila-logo-500x281.png' },
-  { id: 14, name: 'Tommy Hilfiger', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Tommy-Hilfiger-logo-500x281.png' },
-  { id: 15, name: 'Calvin Klein', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Calvin-Klein-logo-500x281.png' },
-  { id: 16, name: 'Forever 21', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Forever-21-logo-500x281.png' },
-  { id: 17, name: 'Mango', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Mango-logo-500x281.png' },
-  { id: 18, name: 'Uniqlo', logo: 'https://1000logos.net/wp-content/uploads/2017/05/Uniqlo-logo-500x281.png' }
-];
   // Categories Data
   const categories = [
     { id: 1, name: "Fashion", image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", items: "15k+ items" },
@@ -66,85 +56,89 @@ const FeaturedProducts = () => {
     { id: 6, name: "Home", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", items: "6k+ items" }
   ];
 
-  // Featured Products Data
-  const featuredProducts = [
+  // Products Data
+  const productsData = [
     {
       id: 1,
-      name: "Designer Kurta Set",
-      price: 1899,
-      originalPrice: 2999,
-      discount: 37,
-      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.5,
+      title: "Women Cotton Straight Kurti",
+      price: 273,
+      oldPrice: 499,
+      rating: 4.1,
       reviews: 128,
-      brand: "Biba",
-      category: "Fashion"
+      category: "fashion",
+      fabric: "Pure Cotton",
+      color: "White",
+      fit: "Straight",
+      length: "Knee Length",
+      image: "https://www.libas.in/cdn/shop/files/58246_2_ed2c4af3-e829-48a2-adcf-1e1da4a84f77.jpg?v=1757324305&width=1080",
+      brand: "Biba"
     },
     {
       id: 2,
-      name: "Sports Running Shoes",
-      price: 2499,
-      originalPrice: 3999,
-      discount: 38,
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.8,
+      title: "Floral Printed Pink Kurti",
+      price: 399,
+      oldPrice: 699,
+      rating: 4.4,
       reviews: 256,
-      brand: "Nike",
-      category: "Footwear"
+      category: "fashion",
+      fabric: "Rayon",
+      color: "Pink",
+      fit: "Regular Fit",
+      length: "Calf Length",
+      image: "https://images.jdmagicbox.com/quickquotes/images_main/chiffon-v-neck-floral-print-full-sleeve-kurti-for-women-baby-pink-2223540911-d9wpo1q6.jpg",
+      brand: "Biba"
     },
     {
       id: 3,
-      name: "Gold Plated Necklace",
-      price: 12999,
-      originalPrice: 18999,
-      discount: 32,
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.9,
+      title: "Blue Anarkali Kurti",
+      price: 599,
+      oldPrice: 899,
+      rating: 4.6,
       reviews: 89,
-      brand: "Tanishq",
-      category: "Jewelry"
+      category: "fashion",
+      fabric: "Georgette",
+      color: "Blue",
+      fit: "Flared",
+      length: "Full Length",
+      image: "https://www.royalexport.in/product-img/buy-blue-anarkali-gown-pure-ge-1734762850.jpg",
+      brand: "Biba"
     },
     {
       id: 4,
-      name: "Wireless Earbuds",
-      price: 2999,
-      originalPrice: 4999,
-      discount: 40,
-      image: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1590658268037-6bf5e60e6a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.6,
-      reviews: 312,
-      brand: "Boat",
-      category: "Electronics"
+      title: "Yellow Casual Kurti",
+      price: 349,
+      oldPrice: 599,
+      rating: 4.2,
+      reviews: 203,
+      category: "fashion",
+      fabric: "Cotton Blend",
+      color: "Yellow",
+      fit: "Straight",
+      length: "Full Length",
+      image: "https://cdn.shopify.com/s/files/1/0572/5555/9212/files/BHKS513_1_fd68d56a-c9e5-49e0-9785-178ddfa9c36d.jpg?v=1753699550",
+      brand: "Biba"
     },
     {
       id: 5,
-      name: "Women's Handbag",
-      price: 1899,
-      originalPrice: 2999,
-      discount: 37,
-      image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.4,
+      title: "Grocery Basket",
+      price: 449,
+      oldPrice: 799,
+      rating: 4.3,
       reviews: 167,
-      brand: "Hidesign",
-      category: "Accessories"
+      category: "grocery",
+      brand: "Best Product",
+      image: "https://png.pngtree.com/png-clipart/20250103/original/pngtree-full-grocery-basket-with-assorted-items-png-image_19400735.png"
     },
     {
       id: 6,
-      name: "Men's Formal Shirt",
-      price: 1299,
-      originalPrice: 1999,
-      discount: 35,
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      hoverImage: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      rating: 4.3,
-      reviews: 203,
-      brand: "Louis Philippe",
-      category: "Fashion"
+      title: "Airburd Headphones",
+      price: 699,
+      oldPrice: 1099,
+      rating: 4.7,
+      reviews: 312,
+      category: "electronics",
+      brand: "Boat",
+      image: "https://dukandwar.com/wp-content/uploads/2020/12/61rjT1TxSpL._SL1500_.jpg"
     }
   ];
 
@@ -167,7 +161,7 @@ const FeaturedProducts = () => {
 
   return (
     <div className="featured-page" style={{ backgroundColor: '#e6e9f4' }}>
-      {/* ===== HERO BANNER SECTION - STATIC NO ANIMATION ===== */}
+      {/* ===== HERO BANNER SECTION ===== */}
       <section className="hero-banner-section">
         <div className="hero-banner-image" style={{ 
           backgroundImage: 'url(https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)'
@@ -185,127 +179,104 @@ const FeaturedProducts = () => {
         </div>
       </section>
 
-      {/* ===== SHOP BY BRAND SECTION ===== */}
-      <section className="brands-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Shop by <span className="gradient-text">Brands</span></h2>
-            <Link to="/brands" className="view-all">View All</Link>
-          </div>
-          <div className="horizontal-scroll-wrapper">
-            <button className="scroll-arrow left" onClick={() => scrollLeft(brandRowRef)}>
-              ‹
-            </button>
-            <div className="brands-row" ref={brandRowRef}>
-              {brands.map(brand => (
-                <div key={brand.id} className="brand-item" onClick={() => navigate(`/brand/${brand.name.toLowerCase()}`)}>
-                  <div className="brand-logo">
-                    <img src={brand.logo} alt={brand.name} />
-                  </div>
-                  <span className="brand-name">{brand.name}</span>
-                </div>
-              ))}
-            </div>
-            <button className="scroll-arrow right" onClick={() => scrollRight(brandRowRef)}>
-              ›
-            </button>
-          </div>
+      {/* ===== SHOP BY BRANDS SECTION ===== */}
+      <div className="shop-by-brands-section">
+        <div className="section-header">
+          <h2 className="section-title">Shop by Brands</h2>
         </div>
-      </section>
+
+        <div className="brands-row-wrapper">
+        
+          <div className="brands-row" ref={brandRowRef}>
+            {brands.map((brand) => (
+              <div className="brand-item" key={brand.id} onClick={() => navigate(`/brand/${brand.name.toLowerCase()}`)}>
+                <img src={brand.logo} alt={brand.name} />
+                <p>{brand.name}</p>
+              </div>
+            ))}
+          </div>
+     
+        </div>
+      </div>
 
       {/* ===== POPULAR CATEGORIES SECTION ===== */}
-      <section className="categories-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Popular <span className="gradient-text">Categories</span></h2>
-            <Link to="/categories" className="view-all">View All</Link>
-          </div>
-          <div className="horizontal-scroll-wrapper">
-            <button className="scroll-arrow left" onClick={() => scrollLeft(categoryRowRef)}>
-              ‹
-            </button>
-            <div className="categories-row" ref={categoryRowRef}>
-              {categories.map(category => (
-                <div 
-                  key={category.id} 
-                  className="category-card"
-                  onClick={() => navigate(`/category/${category.name.toLowerCase()}`)}
-                  style={{ backgroundImage: `url(${category.image})` }}
-                >
-                  <div className="category-overlay"></div>
-                  <div className="category-info">
-                    <h3>{category.name}</h3>
-                    <span>{category.items}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button className="scroll-arrow right" onClick={() => scrollRight(categoryRowRef)}>
-              ›
-            </button>
-          </div>
+      <div className="category-section">
+        <div className="section-header">
+          <h2 className="section-title">Popular Categories</h2>
+     
         </div>
-      </section>
+
+        <div className="category-slider-wrapper">
+          <button className="scroll-arrow left" onClick={() => scrollLeft(categoryRowRef)}>‹</button>
+          <div className="category-slider" ref={categoryRowRef}>
+            {categories.map((category) => (
+              <div className="category-card" key={category.id} onClick={() => navigate(`/category/${category.name.toLowerCase()}`)}>
+                <img src={category.image} alt={category.name} />
+                <div className="category-overlay">
+                  <h3>{category.name}</h3>
+                  <p>{category.items}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button className="scroll-arrow right" onClick={() => scrollRight(categoryRowRef)}>›</button>
+        </div>
+      </div>
 
       {/* ===== FEATURED PRODUCTS SECTION ===== */}
-      <section className="featured-products-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Featured <span className="gradient-text">Products</span></h2>
-            <Link to="/products" className="view-all">View All</Link>
-          </div>
-          <div className="horizontal-scroll-wrapper">
-            <button className="scroll-arrow left" onClick={() => scrollLeft(productRowRef)}>
-              ‹
-            </button>
-            <div className="products-row" ref={productRowRef}>
-              {featuredProducts.map(product => (
-                <div 
-                  key={product.id} 
-                  className="product-card"
-                  onMouseEnter={() => setHoveredProduct(product.id)}
-                  onMouseLeave={() => setHoveredProduct(null)}
-                >
-                  <div className="product-image">
-                    <img 
-                      src={hoveredProduct === product.id && product.hoverImage ? product.hoverImage : product.image} 
-                      alt={product.name} 
-                    />
-                    <span className="product-discount">-{product.discount}%</span>
-                    <button 
-                      className={`wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleWishlist(product.id);
-                      }}
-                    >
-                      <FiHeart />
-                    </button>
+      <div className="featured-section">
+        <div className="section-header">
+          <h2 className="section-title">Featured Products</h2>
+          <button className="view-all-btn" onClick={() => navigate('/products')}>View All</button>
+        </div>
+
+        <div className="products-slider-wrapper">
+          <button className="scroll-arrow left" onClick={() => scrollLeft(productRowRef)}>‹</button>
+          <div className="products-slider" ref={productRowRef}>
+            {productsData.map((product) => (
+              <div 
+                className="product-card" 
+                key={product.id}
+                onClick={() => navigate(`/product/${product.id}`)}
+                onMouseEnter={() => setHoveredProduct(product.id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                <div className="product-image">
+                  <img src={product.image} alt={product.title} />
+                  {product.oldPrice && (
+                    <span className="product-discount">
+                      -{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
+                    </span>
+                  )}
+                  <button 
+                    className={`wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleWishlist(product.id);
+                    }}
+                  >
+                    <FiHeart />
+                  </button>
+                </div>
+                <div className="product-info">
+                  <h3 className="product-title">{product.title}</h3>
+                  <div className="product-rating">
+                    <div className="stars">{renderStars(product.rating)}</div>
+                    <span className="reviews">({product.reviews})</span>
                   </div>
-                  <div className="product-details">
-                    <span className="product-brand">{product.brand}</span>
-                    <h3 className="product-name">{product.name}</h3>
-                    <div className="product-rating">
-                      <div className="stars">{renderStars(product.rating)}</div>
-                      <span className="reviews">({product.reviews})</span>
-                    </div>
-                    <div className="product-price">
-                      <span className="current-price">₹{product.price}</span>
-                      <span className="original-price">₹{product.originalPrice}</span>
-                    </div>
-                    <button className="add-to-cart" onClick={() => navigate('/cart')}>
-                      <FiShoppingBag /> Add to Cart
-                    </button>
+                  <div className="product-price">
+                    <span className="current-price">₹{product.price}</span>
+                    {product.oldPrice && (
+                      <span className="old-price">₹{product.oldPrice}</span>
+                    )}
                   </div>
                 </div>
-              ))}
-            </div>
-            <button className="scroll-arrow right" onClick={() => scrollRight(productRowRef)}>
-              ›
-            </button>
+              </div>
+            ))}
           </div>
+          <button className="scroll-arrow right" onClick={() => scrollRight(productRowRef)}>›</button>
         </div>
-      </section>
+      </div>
 
       {/* ===== DISCOUNT OFFER SECTION ===== */}
       <section className="deals-section">
@@ -354,62 +325,18 @@ const FeaturedProducts = () => {
         </div>
       </section>
 
-      {/* ===== TRENDING NOW SECTION ===== */}
-      <section className="trending-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Trending <span className="gradient-text">Now</span></h2>
-            <Link to="/trending" className="view-all">View All</Link>
-          </div>
-          <div className="trending-grid">
-            <div className="trending-item">
-              <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Oversized T-shirts" />
-              <div className="trending-info">
-                <h4>Oversized T-shirts</h4>
-                <span className="trend-badge">+245%</span>
-              </div>
-            </div>
-            <div className="trending-item">
-              <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cargo Pants" />
-              <div className="trending-info">
-                <h4>Cargo Pants</h4>
-                <span className="trend-badge">+189%</span>
-              </div>
-            </div>
-            <div className="trending-item">
-              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Statement Necklaces" />
-              <div className="trending-info">
-                <h4>Statement Necklaces</h4>
-                <span className="trend-badge">+156%</span>
-              </div>
-            </div>
-            <div className="trending-item">
-              <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="White Sneakers" />
-              <div className="trending-info">
-                <h4>White Sneakers</h4>
-                <span className="trend-badge">+134%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     <div className="trending-section">
 
-      {/* ===== PREMIUM BRAND SHOWCASE ===== */}
-      <section className="brand-showcase-section">
-        <div className="container">
-          <h2 className="brand-showcase-title">Premium <span className="gradient-text">Brands</span></h2>
-          <div className="brand-showcase-grid">
-            {brands.slice(0, 6).map(brand => (
-              <div key={brand.id} className="brand-showcase-card">
-                <img src={brand.logo} alt={brand.name} />
-                <span>{brand.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  {/* HEADER */}
+
+  {/* GRID */}
+  <div className="trending-grid">
+    {/* your existing trending items */}
+  </div>
+
+</div>
     </div>
   );
-};
+}
 
 export default FeaturedProducts;

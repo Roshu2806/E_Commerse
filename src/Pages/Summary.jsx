@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiShoppingBag } from "react-icons/bi";
+import { FiCheckCircle, FiPackage, FiTruck, FiShield, FiStar } from "react-icons/fi";
+import { BsShieldCheck, BsCheckCircle, BsGem, BsAward } from "react-icons/bs";
+import { RiVipCrownFill, RiMedalFill } from "react-icons/ri";
 import "./Summary.css";
 
 export default function Summary() {
@@ -26,8 +29,15 @@ export default function Summary() {
     navigate("/thankyou", { state: { final } });
   };
 
+  // Elegant, stable icons based on payment method
+  const getTitleIcon = () => {
+    if (method === 'cod') return <BsAward className="title-icon" />;
+    if (method === 'online') return <BsGem className="title-icon" />;
+    return <FiStar className="title-icon" />;
+  };
+
   return (
-    <div className="summary-page">
+    <div className="summary-page" style={{ backgroundColor: '#e6e9f4' }}>
       {/* HEADER WITH STEPPER - ON TOP */}
       <div className="summary-header">
         <div className="header-container">
@@ -60,7 +70,14 @@ export default function Summary() {
       <div className="popup-overlay">
         <div className="popup-container">
           <div className="summary-card">
-            <h2 className="summary-title">🎉 Order Summary</h2>
+            <div className="title-wrapper">
+              <div className="icon-container">
+                {getTitleIcon()}
+                <div className="icon-glow"></div>
+                <div className="icon-ring"></div>
+              </div>
+              <h2 className="summary-title">Order Summary</h2>
+            </div>
 
             <div className="summary-details">
               <div className="summary-row">
@@ -101,7 +118,8 @@ export default function Summary() {
             </button>
 
             <p className="secure-note">
-              🔒 Secure Checkout • 100% Protected
+              <FiShield className="secure-icon" />
+              <span>Secure Checkout • 100% Protected</span>
             </p>
           </div>
         </div>

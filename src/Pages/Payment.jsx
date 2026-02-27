@@ -125,10 +125,7 @@ const Payment = () => {
             ))}
           </div>
 
-          <div className="header-secure">
-            <span className="secure-dot"></span>
-            <span>Secure Checkout</span>
-          </div>
+        
         </div>
       </div>
 
@@ -240,7 +237,7 @@ const Payment = () => {
                       <label htmlFor="phonepe" className="wallet-label">
                         <SiPhonepe className="wallet-icon phonepe" />
                         <span>PhonePe</span>
-                        <span className="wallet-balance">₹0</span>
+                        
                       </label>
                     </div>
                     <div className="wallet-item">
@@ -248,7 +245,7 @@ const Payment = () => {
                       <label htmlFor="paytm" className="wallet-label">
                         <SiPaytm className="wallet-icon paytm" />
                         <span>Paytm</span>
-                        <span className="wallet-balance">₹0</span>
+                        
                       </label>
                     </div>
                     <div className="wallet-item">
@@ -256,7 +253,7 @@ const Payment = () => {
                       <label htmlFor="googlepay" className="wallet-label">
                         <SiGooglepay className="wallet-icon" style={{ color: '#4285f4' }} />
                         <span>Google Pay</span>
-                        <span className="wallet-balance">₹0</span>
+                        
                       </label>
                     </div>
                     <div className="wallet-item">
@@ -264,7 +261,7 @@ const Payment = () => {
                       <label htmlFor="amazonpay" className="wallet-label">
                         <SiAmazonpay className="wallet-icon amazon" />
                         <span>Amazon Pay</span>
-                        <span className="wallet-balance">₹0</span>
+                        
                       </label>
                     </div>
                   </div>
